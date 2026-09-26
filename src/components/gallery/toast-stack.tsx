@@ -133,14 +133,20 @@ function ToastCard({
         onTap={(e) => (e as PointerEvent).pointerType !== "mouse" && onTap()}
         className="flex cursor-grab items-center gap-3 rounded-2xl bg-primary pr-4 pl-2.5 text-primary-foreground shadow-[0_8px_20px_-10px_rgb(0_0_0/0.4)] active:cursor-grabbing"
       >
-        <span className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-primary-foreground/10">
-          <Icon />
-        </span>
-        <span className="min-w-0 flex-1 leading-tight">
-          <span className="block truncate text-sm font-medium">{title}</span>
-          <span className="block truncate text-[13px] text-primary-foreground/60">{body}</span>
-        </span>
-        <span className="text-xs text-primary-foreground/45">now</span>
+        <motion.span
+          className="flex min-w-0 flex-1 items-center gap-3"
+          animate={{ opacity: expanded || index === 0 ? 1 : 0 }}
+          transition={springs.smooth}
+        >
+          <span className="grid size-9 shrink-0 place-items-center rounded-[10px] bg-primary-foreground/10">
+            <Icon />
+          </span>
+          <span className="min-w-0 flex-1 leading-tight">
+            <span className="block truncate text-sm font-medium">{title}</span>
+            <span className="block truncate text-[13px] text-primary-foreground/60">{body}</span>
+          </span>
+          <span className="text-xs text-primary-foreground/45">now</span>
+        </motion.span>
       </motion.div>
     </motion.div>
   )
